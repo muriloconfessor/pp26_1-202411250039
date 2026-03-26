@@ -6,17 +6,23 @@ public class Publicacao {
     private String Titulo;
     private Implementador imp;
     
-    public Publicacao(Implementador imp) {this.imp = imp;}
 
-    public void ObterDados() {imp.getDados(this);}
+    // construtor
+    public Publicacao(String autor, String titulo) {
 
-    public void getTitulos(){
-        System.out.println(Titulo);
+        Autor = autor;
+        Titulo = titulo;
     }
+    // define a istancia do implementador e passa a istancia do objeteto atual para o parametro tipo,
+    // no metodo do implementador instanciado
+    public void ObterDados(Implementador imp) {
+        this.imp = imp;
+        imp.getDados(this);
+
+    }
+
+    public void getTitulo(){System.out.println(Titulo);}
 
     public void getAutor() {System.out.println(Autor);}
 
-    public void setTitulo(String titulo) {
-        Titulo = titulo;
-    }
 }
