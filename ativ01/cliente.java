@@ -6,6 +6,8 @@ public class cliente {
         Publicacao Livro = new Livro("Jose", "o principe");
         Livro.ObterDados(new PublicacaoImplBD());
 
+
+        
         Publicacao Revista = new Revista("maria", "Jose");
         Revista.ObterDados(new PublicacaoImplXML());
     
