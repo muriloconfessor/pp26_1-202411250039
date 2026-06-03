@@ -32,7 +32,6 @@ public class GerenciadorPoliticos {
                     sorteado.setsorteado(true);
                     contador ++;
                     System.out.println("O sorteado foi " + sorteado.getnome() + " e deve escolher um dos candidatos para ser o inquirido:");
-                    possibilidades_escolha(indice);
                     return sorteado;
                 
                 }
@@ -41,8 +40,30 @@ public class GerenciadorPoliticos {
             System.out.println("Erro, todos os politicos já foram sorteados");
             return null;
         }
+
         
     }
+
+    public PoliticoColaborador sortear_inquirido(PoliticoColaborador inquiridor) {
+         if (contador < politicos.size()) { 
+            while(true) {
+                Random random = new Random();
+                int indice = random.nextInt(politicos.size());
+                PoliticoColaborador sorteado = politicos.get(indice);
+                if (!sorteado.getnome().equalsIgnoreCase(inquiridor.getnome())) {
+                    System.out.println("O sorteado foi " + sorteado.getnome() + " como inquirido");
+                    return sorteado;
+                
+                }
+            }
+        } else {
+            System.out.println("Erro");
+            return null;
+        }
+    }
+
+
+
 
     public void possibilidades_escolha(Integer indice) {
         for (Integer i = 0; i < politicos.size(); i++) {

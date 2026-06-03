@@ -1,7 +1,7 @@
 package Gerenciador_Debate;
 public class MediatorDebate extends Mediator{
-    private InquiridorColaborador Inquiridor;
-    private InquiridoColaborador Inquirido;
+    private PoliticoColaborador Inquiridor;
+    private PoliticoColaborador Inquirido;
     private MicrofoneCronometro microfoneinquiridor;
     private MicrofoneCronometro microfoneinquirido;
 
@@ -12,17 +12,20 @@ public class MediatorDebate extends Mediator{
     
     
     public void setInquiridor(PoliticoColaborador politico) {
-        Inquiridor = new InquiridorColaborador(politico);
+        Inquiridor = politico.clone();
         Inquiridor.setmicrofone(microfoneinquiridor);
     }
 
     public void setInquirido(PoliticoColaborador politico) {
-        Inquirido = new InquiridoColaborador(politico);
+        Inquirido = politico.clone();
         Inquirido.setmicrofone(microfoneinquirido);
     }
 
     @Override
-    public InquiridorColaborador getInquiridor() {return Inquiridor;}
+    public PoliticoColaborador getInquiridor() {return Inquiridor;}
+
+    @Override
+    public PoliticoColaborador getInquirido() {return Inquirido;}
 
     
     public void debate(Configuracao configuracao) {

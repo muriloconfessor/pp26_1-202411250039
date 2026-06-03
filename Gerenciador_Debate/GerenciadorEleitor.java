@@ -21,9 +21,9 @@ public class GerenciadorEleitor {
         for (Observador eleitor : eleitores) {
             if (eleitor.getnomeeleitor().equals(nome)) {
                 return eleitor;
-            } else {
-                System.out.println("Eleitor não encontrado");
             }
-        }return null;
+        }System.out.println("Eleitor não encontrado");
+        
+        return null;
     }
 }

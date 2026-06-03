@@ -8,14 +8,24 @@ public class Interface {
         facade.cadastrar_politico("Maria");
         facade.cadastrar_politico("Carlos");
 
-       
-        Integer[] tempos = {8,8,4,4};
-        facade.configuracaotempo(tempos);
+        Director director = new Director();
+        ConfiguracaoBuilder configuracaopadrao = new ConfiguracaoConcreta();
+        director.construir(configuracaopadrao);
+        ConfiguracaoBuilder configuracaopadrao02 = new ConfiguracaoConcreta02();
+        director.construir(configuracaopadrao02); 
 
-        facade.cadastroeleitorfacade();
+
+       
+        //Integer[] tempos = {4,4,2,2} extrutura anterior
+        facade.configuracaotempo(configuracaopadrao.getconfiguracaco());
+        
+        facade.cadastroeleitorfacade("Joao", "Murilo");
+        facade.cadastroeleitorfacade("jose", "Maria");
+
+        
     
         facade.sortear();
-        facade.selecionar_inquirido();
         facade.inicardebate();
+        facade.relatoriodebate();
     }
 }

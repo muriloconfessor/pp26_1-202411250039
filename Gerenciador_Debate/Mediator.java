@@ -7,7 +7,11 @@ public class Mediator {
     public void setInquiridor(PoliticoColaborador politico){}
     public void setInquirido(PoliticoColaborador politico) {}
 
-    public InquiridorColaborador getInquiridor(){
+    public PoliticoColaborador getInquiridor(){
+        return null;
+    }
+
+    public PoliticoColaborador getInquirido() {
         return null;
     }
 

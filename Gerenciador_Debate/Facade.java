@@ -39,25 +39,15 @@ public class Facade {
     }
 
     public void sortear() {
-        PoliticoColaborador sorteado = gerenciador_politicos.sortear();
-        mediator_debate.setInquiridor(sorteado);
-        logger.registrarlog(sorteado.getnome() + "foi sorteado como inquiridor");
+        mediator_debate.setInquiridor(gerenciador_politicos.sortear());
+        PoliticoColaborador inquiridor = mediator_debate.getInquiridor();
+        inquiridor.escolher_inquirido(gerenciador_politicos.sortear_inquirido(inquiridor));
+        logger.registrarlog(inquiridor.getnome() + " foi sorteado como inquiridor" + " e " + mediator_debate.getInquirido().getnome() + " foi sorteado como inquirido");
     }
 
-    public void selecionar_inquirido() {
-        Scanner scanner = new Scanner(System.in);
-        String nome;
-        nome = scanner.nextLine();
-        PoliticoColaborador inquirido = gerenciador_politicos.obter_nome(nome);
-        InquiridorColaborador inquiridor = mediator_debate.getInquiridor();
-        inquiridor.escolher_inquirido(inquirido);
-        logger.registrarlog("o inquirido escolhido foi " + nome);
 
-        
-        
-    }
 
-    public void configuracaotempo(Integer[] tempos ) {
+    /*public void configuracaotempo(Integer[] tempos ) { extrutura anterior
         for (Integer tempo : tempos) {
             configuracao.setpergunta(tempo);
             configuracao.setresposta(tempo);
@@ -66,6 +56,13 @@ public class Facade {
             logger.registrarlog("O tempo foi configurado");
         }
     }
+    */
+
+    public void configuracaotempo(Configuracao configuracao) {
+        this.configuracao = configuracao;
+        logger.registrarlog("O tempo foi configurado");
+        }
+    
 
     public void inicardebate() {
         mediator_debate.debate(configuracao);
@@ -76,18 +73,7 @@ public class Facade {
         logger.relatoriofinal();
     }
 
-    public void cadastroeleitorfacade() {
-        Scanner scanner = new Scanner(System.in);
-        String nomepolitico;
-        String nomeeleitor;
-
-        System.out.println("Qual nome do eleitor?");
-        nomeeleitor = scanner.nextLine();
-        System.out.println("");
-        System.out.println("Para qual politico sera a filiacao?");
-        gerenciador_politicos.getpoliticos();
-        nomepolitico = scanner.nextLine();
-        System.out.println("");
+    public void cadastroeleitorfacade(String nomeeleitor, String nomepolitico) {
         gerenciador_eleitor.adicionar_eleitor(nomeeleitor, gerenciador_politicos.obter_nome(nomepolitico));
     }
 

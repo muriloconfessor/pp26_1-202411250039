@@ -1,6 +1,6 @@
 package Gerenciador_Debate;
 import java.util.ArrayList;
-public class PoliticoColaborador {
+public class PoliticoColaborador implements Cloneable{
     private String Nome;
     private Boolean Sorteado = false;
     private MicrofoneCronometro Microfone;
@@ -60,6 +60,24 @@ public class PoliticoColaborador {
         return new ArrayList<>(this.eleitores);
     }
 
+
+    @Override
+
+    public PoliticoColaborador clone() {
+        try {
+            PoliticoColaborador copia = (PoliticoColaborador) super.clone();
+            new ArrayList<>(this.eleitores);
+            return copia;
+
+        } catch (CloneNotSupportedException e) {
+            return null;
+        }
+    }
+
+
+    public void escolher_inquirido(PoliticoColaborador politico) {
+        mediator.setInquirido(politico);
+    }
 
 
 }
