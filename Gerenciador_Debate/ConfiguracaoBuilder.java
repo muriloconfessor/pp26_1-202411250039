@@ -5,6 +5,7 @@ interface ConfiguracaoBuilder {
     public void temporesposta();
     public void temporeplica();
     public void tempotreplica();
+    public void tempodr();
 
     public Configuracao getconfiguracaco();
 

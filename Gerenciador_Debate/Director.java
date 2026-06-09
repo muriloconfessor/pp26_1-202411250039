@@ -6,6 +6,7 @@ public class Director {
         builder.temporesposta();
         builder.temporeplica();
         builder.tempotreplica();
+        builder.tempodr();
     }
 
 

@@ -1,4 +1,4 @@
-package Gerenciador_Debate;
+/*package Gerenciador_Debate;
 public class InquiridoColaborador extends PoliticoColaborador {
 
     public InquiridoColaborador(PoliticoColaborador politico) {
@@ -9,3 +9,4 @@ public class InquiridoColaborador extends PoliticoColaborador {
 
     
 }
+*/

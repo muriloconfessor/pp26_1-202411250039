@@ -47,17 +47,6 @@ public class Facade {
 
 
 
-    /*public void configuracaotempo(Integer[] tempos ) { extrutura anterior
-        for (Integer tempo : tempos) {
-            configuracao.setpergunta(tempo);
-            configuracao.setresposta(tempo);
-            configuracao.setreplica(tempo);
-            configuracao.settreplica(tempo);
-            logger.registrarlog("O tempo foi configurado");
-        }
-    }
-    */
-
     public void configuracaotempo(Configuracao configuracao) {
         this.configuracao = configuracao;
         logger.registrarlog("O tempo foi configurado");
@@ -66,11 +55,14 @@ public class Facade {
 
     public void inicardebate() {
         mediator_debate.debate(configuracao);
-        logger.registrarlog("o debate foi iniciado...");
     }
 
     public void relatoriodebate() {
+        System.out.println("============ Relatorio Final ============");
+        System.out.println(" ");
         logger.relatoriofinal();
+        System.out.println(" ");
+        System.out.println("=========================================");
     }
 
     public void cadastroeleitorfacade(String nomeeleitor, String nomepolitico) {
@@ -81,5 +73,9 @@ public class Facade {
 
         System.out.println("Eleitores de " + nome);
         gerenciador_politicos.eleitorescadastrados(nome);
+    }
+
+    public void gerarDR() {       // metodo para simular uma DR aleatoria
+        gerenciador_politicos.sorteioDR().solicitarDR();
     }
 }

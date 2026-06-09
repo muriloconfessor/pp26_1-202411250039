@@ -1,21 +1,21 @@
 package Gerenciador_Debate;
 import java.util.ArrayList;
-public class PoliticoColaborador implements Cloneable{
+public class PoliticoColaborador extends Sujeito implements Cloneable{
     private String Nome;
     private Boolean Sorteado = false;
     private MicrofoneCronometro Microfone;
     protected Mediator mediator;
-    protected ArrayList <Observador> eleitores;
 
 
     public PoliticoColaborador(String nome, Mediator mediator) {
+        super();
         Nome = nome;
         this.setmediator(mediator);
-        eleitores = new ArrayList<>();
+        this.Microfone = new MicrofoneCronometro(this);
+        
     }
 
     public void setmediator (Mediator mediator) {this.mediator = mediator;}
-    public void setmicrofone(MicrofoneCronometro microfone) {Microfone = microfone;}
     public void setsorteado(Boolean sorteado) {Sorteado = sorteado;}
 
     public String getnome() {return Nome;}
@@ -35,31 +35,6 @@ public class PoliticoColaborador implements Cloneable{
         Microfone.delay();
     }
 
-    public void cadastrareleitor(Observador eleitor) {
-        eleitores.add(eleitor);
-    }
-
-    public void geteleitores() {
-        for (Observador eleitor : eleitores) {
-            System.out.println(eleitor.getnomeeleitor());
-        }
-    }
-
-    public void getfala(String nome) {    //mensagem para o observer
-        
-        System.out.println(nome + " Seu candidato está falando");
-    }
-
-    public void notificar() {
-        for (Observador eleitor :  eleitores) {
-            eleitor.atualizar();
-        }
-    }
-
-    public ArrayList <Observador> getlistaeleitores() {
-        return new ArrayList<>(this.eleitores);
-    }
-
 
     @Override
 
@@ -74,9 +49,12 @@ public class PoliticoColaborador implements Cloneable{
         }
     }
 
-
     public void escolher_inquirido(PoliticoColaborador politico) {
         mediator.setInquirido(politico);
+    }
+
+    public void solicitarDR() {
+        Microfone.solicitarDR();
     }
 
 

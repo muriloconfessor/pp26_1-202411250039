@@ -87,5 +87,12 @@ public class GerenciadorPoliticos {
     }
 
 
+    public PoliticoColaborador sorteioDR() {
+        Random random = new Random();
+        int indice = random.nextInt(politicos.size());
+        return politicos.get(indice);
+    }
+
+
 
 }

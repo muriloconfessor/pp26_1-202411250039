@@ -1,8 +1,13 @@
 package Gerenciador_Debate;
 public class MicrofoneCronometro {
     private Boolean microfoneAtivo;
+    private PoliticoColaborador politico;
+    private Boolean DR;
 
-    public MicrofoneCronometro() {}
+    public MicrofoneCronometro(PoliticoColaborador politico) {
+        this.politico = politico;
+        DR = false;
+    }
 
     public void Ativar() {microfoneAtivo = true;}
     public void Desativar() {microfoneAtivo = false;}
@@ -21,5 +26,16 @@ public class MicrofoneCronometro {
 
         }
     }
+    public void solicitarDR() {
+        if (politico.getmediator().getsituacaodr()) {
+            System.out.println("Não é possivel solicitar DR durante uma DR");
+            return;
+        } else {
+            politico.getmediator().adicionarsolicitacaodr(politico);
+        }
+
+    }
+
+
 
 }

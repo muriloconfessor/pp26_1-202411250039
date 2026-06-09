@@ -18,14 +18,15 @@ public class Interface {
        
         //Integer[] tempos = {4,4,2,2} extrutura anterior
         facade.configuracaotempo(configuracaopadrao.getconfiguracaco());
-        
         facade.cadastroeleitorfacade("Joao", "Murilo");
         facade.cadastroeleitorfacade("jose", "Maria");
 
         
-    
+        facade.gerarDR();
         facade.sortear();
         facade.inicardebate();
+        facade.gerarDR();
         facade.relatoriodebate();
+        
     }
 }

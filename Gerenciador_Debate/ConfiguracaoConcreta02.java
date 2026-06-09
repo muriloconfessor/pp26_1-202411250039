@@ -29,6 +29,11 @@ public class ConfiguracaoConcreta02 implements ConfiguracaoBuilder {
     }
 
     @Override
+    public void tempodr() {
+        configuracao.setdr(1);
+    }
+
+    @Override
     public Configuracao getconfiguracaco() {
         return configuracao;
     }
